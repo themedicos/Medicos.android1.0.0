@@ -3,22 +3,17 @@ package com.example.medicos;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
-
-import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.medicos.databinding.ActivityWritePrescriptionBinding;
+
+import java.util.ArrayList;
 
 
 public class WritePrescription extends AppCompatActivity {
@@ -27,6 +22,8 @@ public class WritePrescription extends AppCompatActivity {
     private static final String[] Medicine = new String[]{
             "hh", "vv"
     };
+
+    ArrayList<prescribed_test> test_list = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +57,45 @@ public class WritePrescription extends AppCompatActivity {
 
     public void OnDeleteMedicine(View v) {
         binding.addMoreMedicine.removeView((View) v.getParent());
+    }
+    public void preview(View v){
+
+        if (checkIfValidAndRead()){
+            Intent intent = new Intent(WritePrescription.this,preview_prescription.class);
+            Bundle bundle= new Bundle();
+            bundle.putSerializable("list",test_list);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
+
+    }
+
+    private boolean checkIfValidAndRead() {
+        test_list.clear();
+        boolean result = true;
+        for (int i=0;i<binding.addMoreAdviceTest.getChildCount();i++){
+            View addMoreTest = binding.addMoreAdviceTest.getChildAt(i);
+            AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.search1);
+            TextView textView = findViewById(R.id.specification);
+            prescribed_test prescribed_test = new prescribed_test();
+            if (!autoCompleteTextView.getText().toString().equals("")){
+                prescribed_test.setTest_name(autoCompleteTextView.getText().toString());
+            }else{
+                result =false;
+                break;
+            }
+            if (!textView.getText().toString().equals("")){
+                prescribed_test.setSpecification(textView.getText().toString());
+            }else {
+                result= false;
+                break;
+            }
+
+        }
+
+
+
+        return result;
     }
 
 }

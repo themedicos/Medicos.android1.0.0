@@ -21,6 +21,7 @@
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/shadowbackground.xml" value="0.1451388888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/shape.xml" value="0.21770833333333334" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/shape2.xml" value="0.1451388888888889" />
+        <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/table.xml" value="0.1451388888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/font/aladin.xml" value="0.1545138888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_first_slider.xml" value="0.19610507246376813" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_main.xml" value="0.13333333333333333" />
@@ -28,12 +29,14 @@
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_mobile_number_for_verify.xml" value="0.13333333333333333" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_patient_details.xml" value="0.12056010928961748" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_prescription_preview.xml" value="0.11441256830601093" />
-        <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_preview_prescription.xml" value="0.11441256830601093" />
+        <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_preview_prescription.xml" value="0.13999999999999999" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_sign_up_log_in.xml" value="0.16666666666666666" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_splash_screen.xml" value="0.19610507246376813" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_user_input.xml" value="0.1539855072463768" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_validate_otp.xml" value="0.17798913043478262" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/activity_write_prescription.xml" value="0.1" />
+        <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/add_advice_test.xml" value="0.1" />
+        <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/add_prescription.xml" value="0.1" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/advice_test_box.xml" value="0.12" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/fragment_blank.xml" value="0.1051912568306011" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/layout/fragment_dashboard.xml" value="0.14583333333333334" />
