@@ -1,6 +1,5 @@
 package com.example.medicos;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import android.content.Intent;
@@ -35,6 +34,7 @@ public class WritePrescription extends AppCompatActivity {
 
         ArrayAdapter<String> search_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, Medicine);
+        binding.search0.setAdapter(search_adapter);
 
     }
 
@@ -78,24 +78,22 @@ public class WritePrescription extends AppCompatActivity {
             AutoCompleteTextView autoCompleteTextView = (AutoCompleteTextView) findViewById(R.id.search1);
             TextView textView = findViewById(R.id.specification);
             prescribed_test prescribed_test = new prescribed_test();
-            if (!autoCompleteTextView.getText().toString().equals("")){
+            if (!autoCompleteTextView.getText().toString().isEmpty()){
                 prescribed_test.setTest_name(autoCompleteTextView.getText().toString());
             }else{
                 result =false;
                 break;
             }
-            if (!textView.getText().toString().equals("")){
-                prescribed_test.setSpecification(textView.getText().toString());
-            }else {
-                result= false;
-                break;
-            }
+//            if (!textView.getText().toString().equals("")){
+//                prescribed_test.setSpecification(textView.getText().toString());
+//            }else {
+//                result= false;
+//                break;
+//            }
 
         }
-
-
-
         return result;
     }
+
 
 }

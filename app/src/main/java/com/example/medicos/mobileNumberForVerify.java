@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicos.databinding.ActivityMobileNumberForVerifyBinding;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,9 +29,8 @@ import java.util.concurrent.TimeUnit;
 
 
 public class mobileNumberForVerify extends AppCompatActivity {
-    Button getOtp;
-    EditText real_otp;
-    ProgressBar progressBar;
+
+    private ActivityMobileNumberForVerifyBinding binding;
 
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -43,25 +43,22 @@ public class mobileNumberForVerify extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mobile_number_for_verify);
-        getOtp = findViewById(R.id.getOtp);
-        real_otp = findViewById(R.id.real_otp);
-        progressBar = findViewById(R.id.progressBar);
+        binding=ActivityMobileNumberForVerifyBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        phone = binding.realOtp.getText().toString().trim();
 
-        phone = real_otp.getText().toString().trim();
-
-        getOtp.setOnClickListener(new View.OnClickListener() {
+        binding.getOtp.setOnClickListener(new View.OnClickListener() {
             private FirebaseAuth mAuth;
 
             @Override
             public void onClick(View v) {
-                if (!real_otp.getText().toString().trim().isEmpty()) {
-                    if ((real_otp.getText().toString().trim()).length() == 10) {
+                if (!binding.realOtp.getText().toString().trim().isEmpty()) {
+                    if ((binding.realOtp.getText().toString().trim()).length() == 10) {
 
 //
 //                        progressBar.setVisibility(View.VISIBLE);
 //                        getOtp.setVisibility(View.INVISIBLE);
-                        phone = "+91" + real_otp.getText().toString().trim();
+                        phone = "+91" + binding.realOtp.getText().toString().trim();
 
                         firebaseAuth = FirebaseAuth.getInstance();
                         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
@@ -73,8 +70,8 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
 
-                                        progressBar.setVisibility(View.VISIBLE);
-                                        getOtp.setVisibility(View.GONE);
+                                        binding.progressBar.setVisibility(View.VISIBLE);
+                                        binding.getOtp.setVisibility(View.GONE);
 
 
                                     }
@@ -89,10 +86,10 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                     @Override
                                     public void onCodeSent(@NonNull String backendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                         super.onCodeSent(backendOtp, forceResendingToken);
-                                        progressBar.setVisibility(View.GONE);
-                                        getOtp.setVisibility(View.VISIBLE);
+                                        binding.progressBar.setVisibility(View.GONE);
+                                        binding.getOtp.setVisibility(View.VISIBLE);
                                         Intent intent = new Intent(mobileNumberForVerify.this, validateOTP.class);
-                                        intent.putExtra("mobileNo", real_otp.getText().toString());
+                                        intent.putExtra("mobileNo", binding.realOtp.getText().toString());
                                         intent.putExtra("backendOtp", backendOtp);
                                         startActivity(intent);
                                     }
@@ -108,5 +105,11 @@ public class mobileNumberForVerify extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    public void bactToRegister(View view) {
+        Intent intent = new Intent(mobileNumberForVerify.this,SignUpLogIn.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_out_right,R.anim.slide_in_left);
     }
 }

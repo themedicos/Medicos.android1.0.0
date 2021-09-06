@@ -31,13 +31,6 @@ public class SliderAdapter extends SliderViewAdapter<SliderAdapter.Holder>{
     public void onBindViewHolder(Holder viewHolder, int position) {
 
         viewHolder.imageView.setImageResource(images[position]);
-        viewHolder.imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent= new Intent(v.getContext(),SignUpLogIn.class);
-                v.getContext().startActivity(intent);
-            }
-        });
 
     }
 

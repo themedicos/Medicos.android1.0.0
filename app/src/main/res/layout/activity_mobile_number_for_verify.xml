@@ -7,21 +7,37 @@
     android:background="@drawable/background"
     tools:context=".mobileNumberForVerify">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="bactToRegister"
+            android:src="@drawable/ic_baseline_arrow_back_24"/>
+    </androidx.appcompat.widget.Toolbar>
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="192dp"
-        android:text="Enter Your Mobile Number:"
+        android:layout_marginTop="152dp"
         android:gravity="center"
+        android:text="Enter Your Mobile Number:"
         android:textAlignment="center"
         android:textColor="#756868"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar4" />
 
     <EditText
         android:id="@+id/real_otp"
@@ -29,7 +45,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
         android:layout_marginEnd="44dp"
-        android:background="@drawable/shape"
+        android:background="@drawable/spinner_background"
         android:ems="9"
         android:gravity="center"
         android:importantForAutofill="no"
@@ -50,7 +66,7 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/shape"
+        android:background="@drawable/spinner_background"
         android:gravity="center"
         android:minHeight="48dp"
         android:padding="5dp"

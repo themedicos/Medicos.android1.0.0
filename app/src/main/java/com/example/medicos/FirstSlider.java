@@ -39,4 +39,14 @@ public class FirstSlider extends AppCompatActivity {
         sliderView.startAutoCycle();
 
     }
+
+    public void skip(View view) {
+        Intent intent = new Intent(FirstSlider.this,MainActivity.class);
+        startActivity(intent);
+    }
+
+    public void next(View view) {
+        Intent intent = new Intent(FirstSlider.this,SignUpLogIn.class);
+        startActivity(intent);
+    }
 }

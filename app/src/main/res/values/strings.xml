@@ -11,6 +11,8 @@
     <string name="what_does_medicos_do">What does medicos do?</string>
     <string name="creating_an_online_centralised_platform_where_users_can_store_their_health_records_can_access_it_at_any_time_and_can_show_it_to_their_respective_doctors_to_get_the_best_treatment_possible">Creating an online centralised platform where users can store their health records, can access it at any time and can show it to their respective doctors to get the best treatment possible.</string>
     <string name="home">Home</string>
+    <string name="cancel">Cancel</string>
+    <string name="Submit">Submit</string>
     <string-array name="Place_array">
         <item>Bhubaneswar</item>
         <item>Cuttack</item>
