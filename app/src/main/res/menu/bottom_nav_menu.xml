@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/navigation_home"
-        android:icon="@drawable/ic_home_"
+        android:icon="@drawable/home"
         android:title="@string/title_home"
         android:checkable="true"
         />
 
     <item
         android:id="@+id/navigation_prescription"
-        android:icon="@drawable/ic_prescription_"
+        android:icon="@drawable/prescription_android"
         android:title="@string/Prescription"
         android:checkable="true"
         />
 
     <item
         android:id="@+id/navigation_userprofile"
-        android:icon="@drawable/ic_profile_"
+        android:icon="@drawable/profile"
         android:title="@string/Profile"
         android:checkable="true"/>
 

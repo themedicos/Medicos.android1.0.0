@@ -20,55 +20,45 @@ import java.util.jar.Attributes;
 
 public class UserInputActivity extends AppCompatActivity {
 
-    private Spinner spinner1,spinner2;
-    private TextView Name,dateOfBirth;
-    private Button usreInputButton;
+    private ActivityUserInputBinding binding;
+    private static final String[] loginas = new String[]{
+            "Doctor", "Individual"
+    };
+    private  static  final String[] gender = new String[]{
+            "Male","Female","Others"
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_input);
+        binding = ActivityUserInputBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        ArrayAdapter<String> search_adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, loginas);
+        binding.autoCompleteTextView.setAdapter(search_adapter);
+
+        ArrayAdapter<String> search_adapter1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_dropdown_item_1line, gender);
+        binding.autoCompleteTextView2.setAdapter(search_adapter1);
 
 
 
-        spinner1 = (Spinner)findViewById(R.id.LogInAs);
-        spinner2 = (Spinner)findViewById(R.id.Gender);
-        Name = findViewById(R.id.Name);
-        dateOfBirth = findViewById(R.id.dateOfBirth);
-        usreInputButton=findViewById(R.id.usreInputButton);
-
-
-
-        ArrayAdapter<CharSequence> adapter1 = ArrayAdapter.createFromResource(this,
-                R.array.LogIn_array, android.R.layout.simple_spinner_item);
-
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setAdapter(adapter1);
-
-
-        ArrayAdapter<CharSequence> adapter2 = ArrayAdapter.createFromResource(this,
-                R.array.gender_array, android.R.layout.simple_spinner_item);
-
-        adapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner2.setAdapter(adapter2);
-
-
-
-        usreInputButton.setOnClickListener(new View.OnClickListener() {
+        binding.usreInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!Name.getText().toString().trim().isEmpty() & !dateOfBirth.getText().toString().trim().isEmpty()){
-                    Intent intent=new Intent(UserInputActivity.this,MainActivity.class);
+                if (!binding.Name.getText().toString().trim().isEmpty() & !binding.dateOfBirth.getText().toString().trim().isEmpty()) {
+                    Intent intent = new Intent(UserInputActivity.this, MainActivity.class);
 //                    intent.putExtra("name",Name.getText().toString());
 //                    intent.putExtra("dateOfbirth",dateOfBirth.getText().toString());
 //                    intent.putExtra("loginas",spinner1.toString());
 //                    intent.putExtra("gender",spinner2.toString());
 
                     Bundle bundle = new Bundle();
-                    bundle.putString("name", Name.getText().toString());
-                    bundle.putString("dateOfbirth", dateOfBirth.getText().toString());
-                    bundle.putString("loginas", String.valueOf(spinner1.getSelectedItem().toString()));
-                    bundle.putString("gender", String.valueOf(spinner2.getSelectedItem().toString()));
+                    bundle.putString("name", binding.Name.getText().toString());
+                    bundle.putString("dateOfbirth", binding.dateOfBirth.getText().toString());
+//                    bundle.putString("loginas", String.valueOf(binding.LogInAs.getSelectedItem().toString()));
+//                    bundle.putString("gender", String.valueOf(binding.Gender.getSelectedItem().toString()));
 
                     //PASS OVER THE BUNDLE TO OUR FRAGMENT
                     Userprofile userprofile = new Userprofile();
@@ -76,10 +66,16 @@ public class UserInputActivity extends AppCompatActivity {
 
                     startActivity(intent);
 
-                }else {
+                } else {
                     Toast.makeText(UserInputActivity.this, "Fill out all the blanck", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+    }
+
+    public void backToRegister(View view) {
+        Intent intent = new Intent(UserInputActivity.this,SignUpLogIn.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_out_right,R.anim.slide_in_left);
     }
 }

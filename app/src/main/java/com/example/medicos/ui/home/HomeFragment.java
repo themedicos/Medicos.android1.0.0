@@ -40,13 +40,6 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home_,container,false);
         SliderView sliderView = view.findViewById(R.id.imageSlider);
 
-//Location Spinner......................................
-        Spinner spinner = (Spinner) view.findViewById(R.id.Location);
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(getContext(),
-                R.array.Place_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
 
         //image slider.....................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
        SliderAdapter sliderAdapter = new SliderAdapter(images);

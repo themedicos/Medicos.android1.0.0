@@ -13,7 +13,7 @@ import java.util.ArrayList;
 public class prescribed_testAdapter extends RecyclerView.Adapter<prescribed_testAdapter.prescribed_testView> {
     ArrayList<prescribed_test> test_list_added = new ArrayList<>();
 
-    public prescribed_testAdapter(ArrayList<prescribed_test> test_list) {
+    public prescribed_testAdapter(preview_prescription preview_prescription, ArrayList<prescribed_test> test_list) {
         this.test_list_added = test_list;
     }
 
@@ -27,7 +27,7 @@ public class prescribed_testAdapter extends RecyclerView.Adapter<prescribed_test
     @Override
     public void onBindViewHolder(@NonNull prescribed_testView holder, int position) {
         prescribed_test prescribed_test = test_list_added.get(position);
-        holder.new_test_name.setText(prescribed_test.getTest_name());
+        holder.newTestName.setText(prescribed_test.getTest_name());
 
     }
 
@@ -38,10 +38,10 @@ public class prescribed_testAdapter extends RecyclerView.Adapter<prescribed_test
 
     public class prescribed_testView extends  RecyclerView.ViewHolder{
 
-        TextView new_test_name;
+        TextView newTestName;
         public prescribed_testView(@NonNull View itemView) {
             super(itemView);
-            new_test_name =(TextView)itemView.findViewById(R.id.new_test_name);
+            newTestName =(TextView)itemView.findViewById(R.id.new_test_name);
         }
     }
 }

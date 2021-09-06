@@ -15,6 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicos.databinding.ActivityValidateOtpBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseException;
@@ -27,9 +28,8 @@ import com.google.firebase.auth.PhoneAuthProvider;
 import java.util.concurrent.TimeUnit;
 
 public class validateOTP extends AppCompatActivity {
-    EditText real_otp;
-    Button submit;
-    TextView resendOtp,mobileNo;
+
+    private ActivityValidateOtpBinding binding;
 
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
@@ -40,29 +40,26 @@ public class validateOTP extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_validate_otp);
-        real_otp = findViewById(R.id.real_otp);
-        submit = findViewById(R.id.submit);
-        resendOtp = findViewById(R.id.resendOtp);
-        mobileNo = findViewById(R.id.mobileNo);
+        binding=ActivityValidateOtpBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
 
-        mobileNo.setText(String.format(
+        binding.mobileNo.setText(String.format(
                 "+91-%s", getIntent().getStringExtra("mobileNo")
         ));
         String otpCode = getIntent().getStringExtra("mobileNo");
 
-        submit.setOnClickListener(new View.OnClickListener() {
+        binding.submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!real_otp.getText().toString().trim().isEmpty()) {
-                    if ((real_otp.getText().toString().trim()).length() == 6) {
+                if (!binding.realOtp.getText().toString().trim().isEmpty()) {
+                    if ((binding.realOtp.getText().toString().trim()).length() == 6) {
 //                    Toast.makeText(validateOTP.this, "verifying OTP", Toast.LENGTH_SHORT).show();
 //                        Intent intent = new Intent(validateOTP.this, UserInputActivity.class);
 //                        startActivity(intent);
 
                         if (otpCode != null) {
 
-                            String enteredOtp = real_otp.getText().toString();
+                            String enteredOtp = binding.realOtp.getText().toString();
 
                             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpCode, enteredOtp);
                             signInWithPhoneAuthCredential(credential);
@@ -89,7 +86,7 @@ public class validateOTP extends AppCompatActivity {
             }
         });
 
-        resendOtp.setOnClickListener(new View.OnClickListener() {
+        binding.resendOtp.setOnClickListener(new View.OnClickListener() {
             private FirebaseAuth mAuth;
             @Override
             public void onClick(View v) {
@@ -124,5 +121,11 @@ public class validateOTP extends AppCompatActivity {
                 };
             }
         });
+    }
+
+    public void backtomobileNumber(View view) {
+        Intent intent = new Intent(validateOTP.this,mobileNumberForVerify.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_out_right,R.anim.slide_in_left);
     }
 }

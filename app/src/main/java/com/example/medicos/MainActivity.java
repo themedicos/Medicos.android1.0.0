@@ -1,9 +1,7 @@
 package com.example.medicos;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Switch;
 
 import com.example.medicos.ui.home.HomeFragment;
 import com.example.medicos.ui.prescription.Prescription;
