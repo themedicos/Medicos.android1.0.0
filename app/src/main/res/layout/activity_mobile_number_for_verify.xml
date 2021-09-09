@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
-    tools:context=".mobileNumberForVerify">
+    tools:context=".UserSignIn.mobileNumberForVerify">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar4"
@@ -17,11 +17,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="bactToRegister"
-            android:src="@drawable/ic_baseline_arrow_back_24"/>
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="12dp" />
     </androidx.appcompat.widget.Toolbar>
 
     <TextView
@@ -63,6 +67,32 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
+        android:id="@+id/Timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="#003FFB"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintEnd_toStartOf="@+id/Second"
+        app:layout_constraintTop_toBottomOf="@+id/real_otp"
+        app:layout_constraintVertical_bias="0.366" />
+
+    <TextView
+        android:id="@+id/Second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#003FFB"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/Timer"
+        app:layout_constraintEnd_toEndOf="@+id/real_otp"
+        app:layout_constraintStart_toStartOf="@+id/real_otp"
+        app:layout_constraintTop_toTopOf="@+id/Timer" />
+
+    <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -83,6 +113,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
@@ -101,12 +132,6 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:visibility="gone" />
     </FrameLayout>
 
 

@@ -1,4 +1,4 @@
-package com.example.medicos;
+package com.example.medicos.Model;
 
 public class prescribed_medicine
 {

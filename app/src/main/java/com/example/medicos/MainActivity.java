@@ -1,8 +1,16 @@
 package com.example.medicos;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.example.medicos.databinding.ActivityMainBinding;
 import com.example.medicos.ui.home.HomeFragment;
 import com.example.medicos.ui.prescription.Prescription;
 import com.example.medicos.ui.userprofile.Userprofile;
@@ -14,21 +22,17 @@ import androidx.appcompat.app.AppCompatDelegate;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.ui.AppBarConfiguration;
 
-import com.example.medicos.databinding.ActivityMainBinding;
 import com.google.android.material.navigation.NavigationBarView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private BottomNavigationView nav_view;
     private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-//        BottomNavigationView navView = findViewById(R.id.nav_view);
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home, R.id.navigation_prescription, R.id.navigation_userprofile).build();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
@@ -40,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
                 binding.navView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
 
+                    @SuppressLint("NonConstantResourceId")
                     @Override
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
@@ -59,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
                         transaction.commit();
                         return true;
                     }
+
+
                 });
 
 

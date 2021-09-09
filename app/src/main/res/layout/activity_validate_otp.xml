@@ -16,12 +16,17 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" >
+        app:layout_constraintTop_toTopOf="parent">
+
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:onClick="backtomobileNumber"
-            android:src="@drawable/ic_baseline_arrow_back_24"/>
+            android:padding="5dp"
+            android:src="@drawable/ic_baseline_arrow_back_24"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="12dp" />
     </androidx.appcompat.widget.Toolbar>
 
 
@@ -71,7 +76,6 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:gravity="center"
-        android:text="Resend OTP"
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="20sp"
@@ -80,6 +84,31 @@
         app:layout_constraintStart_toStartOf="@+id/real_otp"
         app:layout_constraintTop_toBottomOf="@+id/real_otp"
         app:layout_constraintVertical_bias="0.027" />
+
+    <TextView
+        android:id="@+id/TimerOtp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/resendOtp"
+        app:layout_constraintEnd_toStartOf="@+id/TimerSecond"
+        app:layout_constraintTop_toTopOf="@+id/resendOtp" />
+
+    <TextView
+        android:id="@+id/TimerSecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/TimerOtp"
+        app:layout_constraintEnd_toEndOf="@+id/real_otp"
+        app:layout_constraintTop_toTopOf="@+id/TimerOtp" />
 
     <Button
         android:id="@+id/submit"

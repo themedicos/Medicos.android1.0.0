@@ -9,14 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import com.example.medicos.R;
-import com.example.medicos.WritePrescription;
+import com.example.medicos.prescription.WritePrescription;
 import com.example.medicos.databinding.FragmentPrescriptionBinding;
 
 public class Prescription extends Fragment {
