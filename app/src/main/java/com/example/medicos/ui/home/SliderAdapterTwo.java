@@ -5,7 +5,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.medicos.R;
-import com.example.medicos.SliderAdapter;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
 public class SliderAdapterTwo extends SliderViewAdapter<SliderAdapterTwo.Holder>{

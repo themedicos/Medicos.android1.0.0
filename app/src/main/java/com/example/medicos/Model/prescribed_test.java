@@ -1,4 +1,4 @@
-package com.example.medicos;
+package com.example.medicos.Model;
 
 import java.io.Serializable;
 

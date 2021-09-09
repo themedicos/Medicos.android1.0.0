@@ -1,4 +1,4 @@
-package com.example.medicos;
+package com.example.medicos.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.medicos.R;
+import com.example.medicos.Model.prescribed_test;
+import com.example.medicos.prescription.preview_prescription;
 
 import java.util.ArrayList;
 

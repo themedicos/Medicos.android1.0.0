@@ -1,4 +1,4 @@
-package com.example.medicos;
+package com.example.medicos.UserSignIn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -7,6 +7,9 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.medicos.Adapter.SliderAdapter;
+import com.example.medicos.MainActivity;
+import com.example.medicos.R;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
 import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
@@ -20,6 +23,24 @@ public class FirstSlider extends AppCompatActivity {
             R.drawable.three,
             R.drawable.four
     };
+//    String prevStarted = "yes";
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        SharedPreferences sharedpreferences = getSharedPreferences(getString(R.string.app_name), Context.MODE_PRIVATE);
+//        if (!sharedpreferences.getBoolean(prevStarted, false)) {
+//            SharedPreferences.Editor editor = sharedpreferences.edit();
+//            editor.putBoolean(prevStarted, Boolean.TRUE);
+//            editor.apply();
+//        } else {
+//            moveToSecondary();
+//        }
+//    }
+//
+//    private void moveToSecondary() {
+//        Intent intent = new Intent(FirstSlider.this,MainActivity.class);
+//        startActivity(intent);
+//    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,12 +62,12 @@ public class FirstSlider extends AppCompatActivity {
     }
 
     public void skip(View view) {
-        Intent intent = new Intent(FirstSlider.this,MainActivity.class);
+        Intent intent = new Intent(FirstSlider.this, MainActivity.class);
         startActivity(intent);
     }
 
     public void next(View view) {
-        Intent intent = new Intent(FirstSlider.this,SignUpLogIn.class);
+        Intent intent = new Intent(FirstSlider.this, SignUpLogIn.class);
         startActivity(intent);
     }
 }

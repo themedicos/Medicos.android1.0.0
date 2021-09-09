@@ -1,6 +1,4 @@
-package com.example.medicos;
-
-import static android.service.controls.ControlsProviderService.TAG;
+package com.example.medicos.UserSignIn;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,23 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicos.R;
 import com.example.medicos.databinding.ActivityMobileNumberForVerifyBinding;
+import com.example.medicos.validateOTP;
 import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
 
 
@@ -34,7 +29,7 @@ public class mobileNumberForVerify extends AppCompatActivity {
 
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
-    private String mVerificationId;
+    public String mVerificationId;
     private static final String TAG = "MAIN_TAG";
     private FirebaseAuth firebaseAuth;
     private ProgressDialog pd;
@@ -43,7 +38,7 @@ public class mobileNumberForVerify extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityMobileNumberForVerifyBinding.inflate(getLayoutInflater());
+        binding = ActivityMobileNumberForVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         phone = binding.realOtp.getText().toString().trim();
 
@@ -54,10 +49,24 @@ public class mobileNumberForVerify extends AppCompatActivity {
             public void onClick(View v) {
                 if (!binding.realOtp.getText().toString().trim().isEmpty()) {
                     if ((binding.realOtp.getText().toString().trim()).length() == 10) {
+                        Toast.makeText(mobileNumberForVerify.this, "please wait it may take few seconds to send OTP ....", Toast.LENGTH_SHORT).show();
 
-//
-//                        progressBar.setVisibility(View.VISIBLE);
-//                        getOtp.setVisibility(View.INVISIBLE);
+//                        binding.Timer.setText(String.valueOf(1));
+
+                        new CountDownTimer(180000,100){
+
+                            @Override
+                            public void onTick(long millisUntilFinished) {
+                                binding.Timer.setText(MessageFormat.format("{0}", millisUntilFinished / 1000,""));
+                                binding.Second.setText("Sec");
+
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                binding.Second.setText("Retry");
+                            }
+                        }.start();
                         phone = "+91" + binding.realOtp.getText().toString().trim();
 
                         firebaseAuth = FirebaseAuth.getInstance();
@@ -70,8 +79,6 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
 
-                                        binding.progressBar.setVisibility(View.VISIBLE);
-                                        binding.getOtp.setVisibility(View.GONE);
 
 
                                     }
@@ -86,11 +93,11 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                     @Override
                                     public void onCodeSent(@NonNull String backendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                         super.onCodeSent(backendOtp, forceResendingToken);
-                                        binding.progressBar.setVisibility(View.GONE);
+                                        mVerificationId = backendOtp;
                                         binding.getOtp.setVisibility(View.VISIBLE);
                                         Intent intent = new Intent(mobileNumberForVerify.this, validateOTP.class);
                                         intent.putExtra("mobileNo", binding.realOtp.getText().toString());
-                                        intent.putExtra("backendOtp", backendOtp);
+                                        intent.putExtra("backendOtp", mVerificationId);
                                         startActivity(intent);
                                     }
                                 })
@@ -108,8 +115,8 @@ public class mobileNumberForVerify extends AppCompatActivity {
     }
 
     public void bactToRegister(View view) {
-        Intent intent = new Intent(mobileNumberForVerify.this,SignUpLogIn.class);
+        Intent intent = new Intent(mobileNumberForVerify.this, SignUpLogIn.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_out_right,R.anim.slide_in_left);
+        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 }

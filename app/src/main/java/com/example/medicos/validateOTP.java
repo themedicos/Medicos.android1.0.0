@@ -1,30 +1,27 @@
 package com.example.medicos;
 
-import static android.service.controls.ControlsProviderService.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.os.CountDownTimer;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicos.UserSignIn.mobileNumberForVerify;
 import com.example.medicos.databinding.ActivityValidateOtpBinding;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
 
+import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
 
 public class validateOTP extends AppCompatActivity {
@@ -35,27 +32,38 @@ public class validateOTP extends AppCompatActivity {
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     private String mVerificationId;
     private FirebaseAuth firebaseAuth;
-    private ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivityValidateOtpBinding.inflate(getLayoutInflater());
+        binding = ActivityValidateOtpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        firebaseAuth=FirebaseAuth.getInstance();
 
         binding.mobileNo.setText(String.format(
                 "+91-%s", getIntent().getStringExtra("mobileNo")
         ));
-        String otpCode = getIntent().getStringExtra("mobileNo");
+        String otpCode = getIntent().getStringExtra("backendOtp");
+
+        new CountDownTimer(60000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+                binding.TimerOtp.setText(MessageFormat.format("{0}", millisUntilFinished / 1000,""));
+                binding.TimerSecond.setText("Sec");
+            }
+
+            @Override
+            public void onFinish() {
+                binding.resendOtp.setText("Resend Otp");
+            }
+        }.start();
 
         binding.submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!binding.realOtp.getText().toString().trim().isEmpty()) {
                     if ((binding.realOtp.getText().toString().trim()).length() == 6) {
-//                    Toast.makeText(validateOTP.this, "verifying OTP", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(validateOTP.this, UserInputActivity.class);
-//                        startActivity(intent);
 
                         if (otpCode != null) {
 
@@ -65,29 +73,36 @@ public class validateOTP extends AppCompatActivity {
                             signInWithPhoneAuthCredential(credential);
                         }
 
-                        } else {
-                            Toast.makeText(validateOTP.this, "OTP Must Be 6 Digit", Toast.LENGTH_SHORT).show();
-                        }
                     } else {
-                        Toast.makeText(validateOTP.this, "OTP Must Be Non-empty and 6 Digit", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(validateOTP.this, "OTP Must Be 6 Digit", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(validateOTP.this, "OTP Must Be Non-empty and 6 Digit", Toast.LENGTH_SHORT).show();
                 }
             }
-
             private void signInWithPhoneAuthCredential(PhoneAuthCredential credential) {
-                firebaseAuth.signInWithCredential(credential).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
-                    @Override
-                    public void onSuccess(AuthResult authResult) {
-                        String phone = firebaseAuth.getCurrentUser().getPhoneNumber();
-                        Toast.makeText(validateOTP.this, "welcome", Toast.LENGTH_SHORT).show();
+                firebaseAuth.signInWithCredential(credential)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    FirebaseUser user = task.getResult().getUser();
+                                    Intent intent = new Intent(validateOTP.this, UserInputActivity.class);
+                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 
-                        startActivity(new Intent(validateOTP.this, UserInputActivity.class));
-                    }
-                });
+                                    startActivity(intent);
+
+                                } else {
+                                    Toast.makeText(validateOTP.this, "unable to connect", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
             }
         });
 
         binding.resendOtp.setOnClickListener(new View.OnClickListener() {
             private FirebaseAuth mAuth;
+
             @Override
             public void onClick(View v) {
                 firebaseAuth = FirebaseAuth.getInstance();
@@ -109,13 +124,13 @@ public class validateOTP extends AppCompatActivity {
                     @Override
                     public void onVerificationFailed(@NonNull FirebaseException e) {
 
-                        Toast.makeText(validateOTP.this, ""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(validateOTP.this, "" + e.getMessage(), Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
                     public void onCodeSent(@NonNull String newbackendOtp, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                         super.onCodeSent(newbackendOtp, forceResendingToken);
-                        newbackendOtp=otpCode;
+                        newbackendOtp = otpCode;
                         Toast.makeText(validateOTP.this, "successfully send", Toast.LENGTH_SHORT).show();
                     }
                 };
@@ -124,8 +139,8 @@ public class validateOTP extends AppCompatActivity {
     }
 
     public void backtomobileNumber(View view) {
-        Intent intent = new Intent(validateOTP.this,mobileNumberForVerify.class);
+        Intent intent = new Intent(validateOTP.this, mobileNumberForVerify.class);
         startActivity(intent);
-        overridePendingTransition(R.anim.slide_out_right,R.anim.slide_in_left);
+        overridePendingTransition(R.anim.slide_out_right, R.anim.slide_in_left);
     }
 }

@@ -1,4 +1,4 @@
-package com.example.medicos;
+package com.example.medicos.prescription;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
@@ -10,6 +10,8 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
 
+import com.example.medicos.Model.prescribed_test;
+import com.example.medicos.R;
 import com.example.medicos.databinding.ActivityWritePrescriptionBinding;
 
 import java.util.ArrayList;
@@ -61,7 +63,7 @@ public class WritePrescription extends AppCompatActivity {
     public void preview(View v){
 
         if (checkIfValidAndRead()){
-            Intent intent = new Intent(WritePrescription.this,preview_prescription.class);
+            Intent intent = new Intent(WritePrescription.this, preview_prescription.class);
             Bundle bundle= new Bundle();
             bundle.putSerializable("list",test_list);
             intent.putExtras(bundle);
