@@ -31,11 +31,12 @@
             android:layout_gravity="end"
             android:layout_margin="30dp"
             android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
-            android:text="Skip"
             android:onClick="skip"
+            android:text="Skip"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
 
         <TextView
             android:id="@+id/textView47"
@@ -44,11 +45,12 @@
             android:layout_gravity="bottom|end"
             android:layout_margin="30dp"
             android:drawableEnd="@drawable/ic_baseline_chevron_right_24"
-            android:text="Next"
             android:onClick="next"
+            android:text="Next"
             android:textColor="#FFFFFF"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
     </com.smarteist.autoimageslider.SliderView>
 
 

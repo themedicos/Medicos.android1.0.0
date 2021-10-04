@@ -6,11 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".ui.prescription.Prescription" >
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar2"
         android:layout_width="match_parent"
+        android:elevation="10dp"
         android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,14 +23,14 @@
             android:layout_height="match_parent"
             android:text="Prescription"
             android:textAlignment="viewStart"
-            android:textColor="#FFFFFF"
+            android:textColor="#000132"
             android:textSize="20sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="15dp">
 
         </TextView>
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.MaterialToolbar>
 
     <TextView
         android:id="@+id/enter_patie"

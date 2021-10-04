@@ -8,11 +8,12 @@
     tools:context=".ui.home.HomeFragment"
     tools:ignore="ExtraText">
 
-    <androidx.appcompat.widget.Toolbar
+    <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/toolbar3"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="?attr/colorPrimary"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:background="@color/white"
         android:minHeight="?attr/actionBarSize"
         android:theme="?attr/actionBarTheme">
 
@@ -26,7 +27,7 @@
                 android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="Home"
-                android:textColor="#FFFFFF"
+                android:textColor="#000132"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -35,11 +36,11 @@
                 android:layout_height="50dp"
                 android:layout_gravity="end"
                 android:layout_weight="1"
-                android:src="@drawable/logo1" />
+                android:src="@drawable/logo7" />
 
         </LinearLayout>
 
-    </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.MaterialToolbar>
 
 
     <ScrollView

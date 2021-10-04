@@ -6,6 +6,7 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -19,7 +20,7 @@
 
 
         </activity>
-        <!--            android:theme="@android:style/Theme.Holo.DialogWhenLarge"-->
+
         <activity
             android:name=".prescription.WritePrescription"
             android:exported="true">
@@ -28,11 +29,7 @@
         <activity
             android:name=".UserInputActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".validateOTP"
@@ -52,13 +49,16 @@
             android:name=".SplashScreen"
             android:exported="true">
 
-
         </activity>
         <activity
             android:name=".MainActivity"
             android:exported="true"
             android:label="@string/app_name">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data

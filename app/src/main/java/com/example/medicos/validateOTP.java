@@ -2,6 +2,7 @@ package com.example.medicos;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,6 +39,7 @@ public class validateOTP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityValidateOtpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         firebaseAuth=FirebaseAuth.getInstance();
 

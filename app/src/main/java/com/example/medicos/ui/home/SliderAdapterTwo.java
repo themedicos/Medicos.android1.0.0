@@ -1,4 +1,5 @@
 package com.example.medicos.ui.home;
+
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,11 +8,11 @@ import android.widget.ImageView;
 import com.example.medicos.R;
 import com.smarteist.autoimageslider.SliderViewAdapter;
 
-public class SliderAdapterTwo extends SliderViewAdapter<SliderAdapterTwo.Holder>{
+public class SliderAdapterTwo extends SliderViewAdapter<SliderAdapterTwo.Holder> {
 
     int[] images;
 
-    public SliderAdapterTwo(int[] images){
+    public SliderAdapterTwo(int[] images) {
 
         this.images = images;
 
@@ -21,7 +22,7 @@ public class SliderAdapterTwo extends SliderViewAdapter<SliderAdapterTwo.Holder>
     public SliderAdapterTwo.Holder onCreateViewHolder(ViewGroup parent) {
 
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.slider_item,parent,false);
+                .inflate(R.layout.slider_item, parent, false);
         return new Holder(view);
     }
 

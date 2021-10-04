@@ -54,7 +54,7 @@
                     app:cardCornerRadius="5dp"
                     app:cardElevation="10dp">
 
-                    <TextView
+                    <EditText
                         android:id="@+id/specification"
                         tools:ignore="TouchTargetSizeCheck"
                         android:layout_width="match_parent"

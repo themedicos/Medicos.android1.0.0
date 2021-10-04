@@ -2,9 +2,11 @@ package com.example.medicos.UserSignIn;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -12,21 +14,22 @@ import android.widget.Toast;
 
 import com.example.medicos.R;
 import com.example.medicos.databinding.ActivityMobileNumberForVerifyBinding;
+import com.example.medicos.phoneNoClass;
 import com.example.medicos.validateOTP;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.MessageFormat;
 import java.util.concurrent.TimeUnit;
 
 
 public class mobileNumberForVerify extends AppCompatActivity {
-
     private ActivityMobileNumberForVerifyBinding binding;
-
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     public String mVerificationId;
@@ -34,13 +37,19 @@ public class mobileNumberForVerify extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private ProgressDialog pd;
     String phone;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityMobileNumberForVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+
         phone = binding.realOtp.getText().toString().trim();
+        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
+        SharedPreferences.Editor myEdit = sharedPreferences.edit();
+        myEdit.putString("phone", phone);
+        myEdit.commit();
 
         binding.getOtp.setOnClickListener(new View.OnClickListener() {
             private FirebaseAuth mAuth;
@@ -51,13 +60,15 @@ public class mobileNumberForVerify extends AppCompatActivity {
                     if ((binding.realOtp.getText().toString().trim()).length() == 10) {
                         Toast.makeText(mobileNumberForVerify.this, "please wait it may take few seconds to send OTP ....", Toast.LENGTH_SHORT).show();
 
-//                        binding.Timer.setText(String.valueOf(1));
+                        phone = "+91" + binding.realOtp.getText().toString().trim();
+                        phoneNoClass.setMobileNoOfDoctor(phone);
 
-                        new CountDownTimer(180000,100){
+
+                        new CountDownTimer(180000, 100) {
 
                             @Override
                             public void onTick(long millisUntilFinished) {
-                                binding.Timer.setText(MessageFormat.format("{0}", millisUntilFinished / 1000,""));
+                                binding.Timer.setText(MessageFormat.format("{0}", millisUntilFinished / 1000, ""));
                                 binding.Second.setText("Sec");
 
                             }
@@ -67,7 +78,7 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                 binding.Second.setText("Retry");
                             }
                         }.start();
-                        phone = "+91" + binding.realOtp.getText().toString().trim();
+
 
                         firebaseAuth = FirebaseAuth.getInstance();
                         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
@@ -77,8 +88,6 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                 .setCallbacks(new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
                                     @Override
                                     public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-
-
 
 
                                     }
