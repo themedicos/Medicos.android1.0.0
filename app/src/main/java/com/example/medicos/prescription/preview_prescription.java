@@ -1,6 +1,7 @@
 package com.example.medicos.prescription;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -27,6 +28,7 @@ public class preview_prescription extends AppCompatActivity {
         setContentView(R.layout.activity_preview_prescription);
         RecyclerView recyclerView1 = findViewById(R.id.recyclerview1);
         ArrayList<prescribed_test> test_list_added;
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(preview_prescription.this, RecyclerView.VERTICAL, false);

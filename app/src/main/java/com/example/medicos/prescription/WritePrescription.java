@@ -32,6 +32,12 @@ public class WritePrescription extends AppCompatActivity {
         binding = ActivityWritePrescriptionBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        String patientname= getIntent().getStringExtra("patientName");
+
+        binding.patientnameAtPrescription.setText(patientname);
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
         ArrayAdapter<String> search_adapter = new ArrayAdapter<String>(this,
@@ -98,4 +104,7 @@ public class WritePrescription extends AppCompatActivity {
     }
 
 
+    public void send(View view) {
+
+    }
 }

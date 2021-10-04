@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/P.ARYAPRAKASH/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_dropdown_item_1line.xml" value="0.13046448087431695" />
         <entry key="..\:/Users/P.ARYAPRAKASH/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.11646174863387979" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21435897435897436" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/button_shape.xml" value="0.1451388888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/home_logo_makeup.xml" value="0.21435897435897436" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.1451388888888889" />
+        <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/ic_baseline_chevron_right_24.xml" value="0.1451388888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/ic_baseline_clear_24.xml" value="0.1451388888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1451388888888889" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable/ic_baseline_phone_24.xml" value="0.1451388888888889" />

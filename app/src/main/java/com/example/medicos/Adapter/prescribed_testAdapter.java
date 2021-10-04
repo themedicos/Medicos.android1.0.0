@@ -3,6 +3,7 @@ package com.example.medicos.Adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -43,9 +44,11 @@ public class prescribed_testAdapter extends RecyclerView.Adapter<prescribed_test
     public class prescribed_testView extends  RecyclerView.ViewHolder{
 
         TextView newTestName;
+        EditText specification;
         public prescribed_testView(@NonNull View itemView) {
             super(itemView);
             newTestName =(TextView)itemView.findViewById(R.id.new_test_name);
+            specification=(EditText)itemView.findViewById(R.id.specification);
         }
     }
 }

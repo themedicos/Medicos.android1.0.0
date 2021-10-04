@@ -1,6 +1,7 @@
 package com.example.medicos.UserSignIn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,8 +15,9 @@ public class SignUpLogIn extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding=ActivitySignUpLogInBinding.inflate(getLayoutInflater());
+        binding = ActivitySignUpLogInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         binding.register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -26,7 +28,7 @@ public class SignUpLogIn extends AppCompatActivity {
         binding.login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUpLogIn.this,mobileNumberForVerify.class);
+                Intent intent = new Intent(SignUpLogIn.this, mobileNumberForVerify.class);
                 startActivity(intent);
             }
         });

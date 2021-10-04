@@ -1,13 +1,18 @@
 package com.example.medicos.Model;
 
 public class UserInfo {
-    private String log_in_as;
-    private String username;
-    private String year_of_birth;
-    private String user_gender;
 
-    public UserInfo(){
 
+    private String log_in_as, username, year_of_birth, user_gender;
+
+    public UserInfo(String log_in_as, String username, String year_of_birth, String user_gender) {
+        this.log_in_as = log_in_as;
+        this.username = username;
+        this.year_of_birth = year_of_birth;
+        this.user_gender = user_gender;
+    }
+
+    public UserInfo() {
     }
 
     public String getLog_in_as() {
