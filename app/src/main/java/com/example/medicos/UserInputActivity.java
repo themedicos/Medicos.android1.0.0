@@ -4,11 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
@@ -41,7 +44,8 @@ public class UserInputActivity extends AppCompatActivity {
     private static final String[] gender = new String[]{
             "Male", "Female", "Others"
     };
-    public  String phone;
+    public String phone;
+    int autoSave;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,28 +61,49 @@ public class UserInputActivity extends AppCompatActivity {
                 android.R.layout.simple_dropdown_item_1line, gender);
         binding.Gender.setAdapter(search_adapter1);
 
-        String x= phoneNoClass.getMobileNoOfDoctor();
-
-
+        String x = phoneNoClass.getMobileNoOfDoctor();
+        SharedPreferences sharedPreferences3 =getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        String y= sharedPreferences3.getString("phone","");
 
         binding.usreInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!binding.name.getText().toString().trim().isEmpty() & !binding.yearOfBirth.getText().toString().trim().isEmpty()) {
+                if (!binding.name.getText().toString().trim().isEmpty() & !binding.yearOfBirth.getText().toString().trim().isEmpty() & !binding.clinic.getText().toString().isEmpty() & !binding.clinicLocation.getText().toString().isEmpty()) {
                     String loginas_ = binding.loginas.getText().toString();
                     String name_ = binding.name.getText().toString();
                     String yearofbirth_ = binding.yearOfBirth.getText().toString();
                     String gender_ = binding.Gender.getText().toString();
-                    HashMap<String, String> userinput = new HashMap<>();
+                    String clinic_=binding.clinic.getText().toString();
+                    String clinicLocation_ = binding.clinicLocation.getText().toString();
 
+                    //sharedpreference to save user details
+                    SharedPreferences sharedPreferences1 = getSharedPreferences("userDataInSharedPref",MODE_PRIVATE);
+                    SharedPreferences.Editor editor =sharedPreferences1.edit();
+                    editor.putString("loginas", loginas_);
+                    editor.putString("name", name_);
+                    editor.putString("yearofbirth", yearofbirth_);
+                    editor.putString("gender", gender_);
+                    editor.putString("clinicName", clinic_);
+                    editor.putString("clinicLocation", clinicLocation_);
+                    editor.apply();
+
+                    //save data in database
+                    HashMap<String, String> userinput = new HashMap<>();
                     userinput.put("loginas", loginas_);
                     userinput.put("name", name_);
                     userinput.put("yearofbirth", yearofbirth_);
                     userinput.put("gender", gender_);
-                    DatabaseReference root = db.getReference("DoctorData").child(x);
+                    userinput.put("clinicName", clinic_);
+                    userinput.put("clinicLocation", clinicLocation_);
+                    DatabaseReference root = db.getReference("DoctorData").child(y);
                     root.setValue(userinput).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
+                            autoSave=1;
+                            SharedPreferences sharedpreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putInt("key", autoSave);
+                            editor.apply();
                             Intent intent = new Intent(UserInputActivity.this, MainActivity.class);
                             startActivity(intent);
                         }
@@ -104,12 +129,13 @@ public class UserInputActivity extends AppCompatActivity {
         int year = calendar.get(Calendar.YEAR);
 
         picker = new DatePickerDialog(UserInputActivity.this, new DatePickerDialog.OnDateSetListener() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
                 binding.yearOfBirth.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
 
             }
-        },year, month, day);
+        }, year, month, day);
         picker.show();
     }
 }

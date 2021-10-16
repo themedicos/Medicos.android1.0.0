@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.medicos.UserSignIn.FirstSlider;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -25,13 +23,6 @@ public class SplashScreen extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-//                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-//                    Intent intent;
-//                    if (user != null) {
-//                        intent = new Intent(SplashScreen.this, MainActivity.class);
-//                    } else {
-//                        intent = new Intent(SplashScreen.this, FirstSlider.class);
-//                    }
                     Intent intent = new Intent(SplashScreen.this, FirstSlider.class);
                     startActivity(intent);
                     finish();

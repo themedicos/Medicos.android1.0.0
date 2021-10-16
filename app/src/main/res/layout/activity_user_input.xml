@@ -53,34 +53,15 @@
 <!--                android:textStyle="bold"-->
 <!--                tools:ignore="SpeakableTextPresentCheck" />-->
 
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="wrap_content"
-                android:hint="Login As"
-                android:layout_marginStart="16dp"
-                android:layout_marginEnd="32dp"
-                android:layout_marginBottom="10dp"
-                android:layout_height="match_parent">
-
-                <AutoCompleteTextView
-                    android:id="@+id/loginas"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Doctor"
-                    android:inputType="none"
-                    tools:ignore="TouchTargetSizeCheck" />
-            </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:hint="Name*"
+                android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="10dp"
-                android:layout_height="match_parent">
+                android:hint="Name*">
 
                 <EditText
                     android:id="@+id/name"
@@ -90,15 +71,14 @@
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
-                android:hint="Date Of Birth*"
+                android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="10dp"
-                android:layout_height="match_parent">
+                android:hint="Date Of Birth*">
 
                 <EditText
                     android:id="@+id/year_of_birth"
@@ -111,23 +91,83 @@
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:hint="Gender">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/Gender"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:text="Male"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_weight="1"
+                    android:hint="Login As">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/loginas"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:inputType="none"
+                        android:text="Doctor"
+                        tools:ignore="TouchTargetSizeCheck" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+
             <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
-                android:layout_width="wrap_content"
-                android:hint="Gender"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="32dp"
                 android:layout_marginBottom="10dp"
-                android:layout_height="match_parent">
+                android:hint="Name of Your Clinic Or Hospital*">
 
-                <AutoCompleteTextView
-                    android:id="@+id/Gender"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/clinic"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Male"
-                    android:inputType="none"
-                    tools:ignore="TouchTargetSizeCheck" />
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="32dp"
+                android:layout_marginBottom="10dp"
+                android:hint="Location*">
+
+                <EditText
+                    android:id="@+id/clinicLocation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </com.google.android.material.textfield.TextInputLayout>
 
 

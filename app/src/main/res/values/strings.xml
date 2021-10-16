@@ -58,4 +58,5 @@
         <item>Before Dinner</item>
         <item>After Dinner</item>
     </string-array>
+    <string name="hyperlink">To stay updated please visit our website\n<a href="https://themedicos.in">https://themedicos.in</a></string>
 </resources>
