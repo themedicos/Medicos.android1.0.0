@@ -62,7 +62,7 @@
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:layout_weight="1"
-                    app:srcCompat="@drawable/logohome" />
+                    app:srcCompat="@drawable/logo7" />
             </LinearLayout>
 
             <LinearLayout

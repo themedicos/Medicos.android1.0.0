@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -16,6 +15,8 @@ import com.example.medicos.R;
 import com.example.medicos.databinding.ActivityMobileNumberForVerifyBinding;
 import com.example.medicos.phoneNoClass;
 import com.example.medicos.validateOTP;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
@@ -25,18 +26,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.MessageFormat;
+import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 
 public class mobileNumberForVerify extends AppCompatActivity {
+
     private ActivityMobileNumberForVerifyBinding binding;
     private PhoneAuthProvider.ForceResendingToken forceResendingToken;
     private PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks;
     public String mVerificationId;
     private static final String TAG = "MAIN_TAG";
     private FirebaseAuth firebaseAuth;
-    private ProgressDialog pd;
     String phone;
+    FirebaseDatabase db = FirebaseDatabase.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,12 +48,9 @@ public class mobileNumberForVerify extends AppCompatActivity {
         setContentView(binding.getRoot());
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
+        phone ="+91" + binding.realOtp.getText().toString().trim();
 
-        phone = binding.realOtp.getText().toString().trim();
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref",MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-        myEdit.putString("phone", phone);
-        myEdit.commit();
+
 
         binding.getOtp.setOnClickListener(new View.OnClickListener() {
             private FirebaseAuth mAuth;
@@ -62,15 +63,28 @@ public class mobileNumberForVerify extends AppCompatActivity {
 
                         phone = "+91" + binding.realOtp.getText().toString().trim();
                         phoneNoClass.setMobileNoOfDoctor(phone);
+                        HashMap<String, String> phoneData = new HashMap<>();
+                        phoneData.put("mobileNoOfDoctor", phone);
+                        DatabaseReference Doctor_data = db.getReference("DoctorData").child(phone);
+                        Doctor_data.setValue(phoneData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                Toast.makeText(mobileNumberForVerify.this, "number added successfully...", Toast.LENGTH_SHORT).show();
+                            }
+                        });
 
+                        SharedPreferences sharedPreferences3 = getSharedPreferences("MySharedPref", MODE_PRIVATE);
+                        SharedPreferences.Editor myEdit3 = sharedPreferences3.edit();
+                        myEdit3.putString("phone", phone);
+                        myEdit3.apply();
 
+                        //Timer............>>>>>>>>>>>.
                         new CountDownTimer(180000, 100) {
 
                             @Override
                             public void onTick(long millisUntilFinished) {
                                 binding.Timer.setText(MessageFormat.format("{0}", millisUntilFinished / 1000, ""));
                                 binding.Second.setText("Sec");
-
                             }
 
                             @Override
@@ -78,8 +92,9 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                 binding.Second.setText("Retry");
                             }
                         }.start();
+                        //------------------//
 
-
+                        //OTP.....................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
                         firebaseAuth = FirebaseAuth.getInstance();
                         PhoneAuthOptions options = PhoneAuthOptions.newBuilder(firebaseAuth)
                                 .setPhoneNumber(phone)       // Phone number to verify
@@ -112,6 +127,7 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                 })
                                 .build();
                         PhoneAuthProvider.verifyPhoneNumber(options);
+                        //------------------------------
 
                     } else {
                         Toast.makeText(mobileNumberForVerify.this, "Enter Correct Number", Toast.LENGTH_SHORT).show();

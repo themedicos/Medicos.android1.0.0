@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.medicos.Model.prescribed_test;
 import com.example.medicos.R;
@@ -42,7 +43,7 @@ public class WritePrescription extends AppCompatActivity {
 
         ArrayAdapter<String> search_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, Medicine);
-        binding.search0.setAdapter(search_adapter);
+//        binding.search0.setAdapter(search_adapter);
 
     }
 
@@ -74,6 +75,8 @@ public class WritePrescription extends AppCompatActivity {
             bundle.putSerializable("list",test_list);
             intent.putExtras(bundle);
             startActivity(intent);
+        }else{
+            Toast.makeText(WritePrescription.this, "Fields Must be non-empty...", Toast.LENGTH_SHORT).show();
         }
 
     }

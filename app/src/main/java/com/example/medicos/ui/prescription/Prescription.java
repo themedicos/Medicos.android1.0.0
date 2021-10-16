@@ -2,8 +2,10 @@ package com.example.medicos.ui.prescription;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +40,6 @@ public class Prescription extends Fragment {
         View view = binding.getRoot();
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        String x = phoneNoClass.getMobileNoOfDoctor();
 
         String patient_mobileNumber = binding.realOtp.getText().toString();
         binding.getOtp.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +74,10 @@ public class Prescription extends Fragment {
                         EditText user_name = (EditText) customLayout.findViewById(R.id.PatientName);
                         EditText age = (EditText) customLayout.findViewById(R.id.age);
                         EditText gender = (EditText) customLayout.findViewById(R.id.PatientGender);
+                        String x = phoneNoClass.getMobileNoOfDoctor();
+
+                        SharedPreferences sharedPreferences3 = getActivity().getApplicationContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+                        String y = sharedPreferences3.getString("phone", "");
 
 
                         if (!user_name.getText().toString().isEmpty() & (age.getText().toString().trim()).length() <= 3) {
@@ -82,7 +87,7 @@ public class Prescription extends Fragment {
                             patientData.put("ageOfPatient", age.getText().toString());
                             patientData.put("genderOfPatient", gender.getText().toString());
                             patientData.put("mobileNoOfPatient", patient_mobileNumber);
-                            DatabaseReference Patient_data = db.getReference("DoctorData").child("+919937336406")
+                            DatabaseReference Patient_data = db.getReference("DoctorData").child(y)
                                     .child(patient_mobileNumber);
                             Patient_data.setValue(patientData).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override

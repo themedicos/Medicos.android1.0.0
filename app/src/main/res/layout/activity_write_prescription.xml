@@ -159,52 +159,52 @@
                     app:cardBackgroundColor="#c4c4c4"
                     app:cardCornerRadius="10dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="match_parent"-->
+<!--                        android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:padding="10dp">-->
 
-                            <AutoCompleteTextView
-                                android:id="@+id/search0"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/spinner_background"
-                                android:hint="search medecine"
-                                android:padding="10dp"
-                                tools:ignore="TouchTargetSizeCheck" />
+<!--                            <AutoCompleteTextView-->
+<!--                                android:id="@+id/search0"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_marginEnd="5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@drawable/spinner_background"-->
+<!--                                android:hint="search medecine"-->
+<!--                                android:padding="10dp"-->
+<!--                                tools:ignore="TouchTargetSizeCheck" />-->
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:layout_marginStart="5dp"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="10dp">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                app:cardCornerRadius="5dp"-->
+<!--                                app:cardElevation="10dp">-->
 
-                                <TextView
-                                    android:id="@+id/specification0"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:padding="10dp"
-                                    android:background="@drawable/spinner_background"
-                                    android:text="Specification"
-                                    android:textColor="#0783EF"
-                                    android:textSize="14sp"
-                                    android:textStyle="bold"
-                                    tools:ignore="TouchTargetSizeCheck" />
-                            </androidx.cardview.widget.CardView>
-                        </LinearLayout>
+<!--                                <TextView-->
+<!--                                    android:id="@+id/specification0"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:padding="10dp"-->
+<!--                                    android:background="@drawable/spinner_background"-->
+<!--                                    android:text="Specification"-->
+<!--                                    android:textColor="#0783EF"-->
+<!--                                    android:textSize="14sp"-->
+<!--                                    android:textStyle="bold"-->
+<!--                                    tools:ignore="TouchTargetSizeCheck" />-->
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                        </LinearLayout>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
                 </androidx.cardview.widget.CardView>
 
@@ -224,8 +224,8 @@
                     android:layout_marginTop="10dp"
                     android:background="@drawable/shape2"
                     android:drawableEnd="@drawable/add"
-                    android:text="Add more"
                     android:onClick="OnAddTest"
+                    android:text="Add Test"
                     android:textColor="#FFFFFF" />
 
             </LinearLayout>
@@ -247,139 +247,139 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    app:cardBackgroundColor="#c4c4c4"
-                    app:cardCornerRadius="10dp">
+<!--                <androidx.cardview.widget.CardView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_margin="5dp"-->
+<!--                    app:cardBackgroundColor="#c4c4c4"-->
+<!--                    app:cardCornerRadius="10dp">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+<!--                    <LinearLayout-->
+<!--                        android:layout_width="match_parent"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:orientation="vertical">-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal"
-                            android:padding="10dp">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal"-->
+<!--                            android:padding="10dp">-->
 
-                            <AutoCompleteTextView
-                                android:id="@+id/search2"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:layout_marginEnd="5dp"
-                                android:layout_weight="1"
-                                android:background="@drawable/spinner_background"
-                                android:hint="search medecine"
-                                android:padding="10dp"
-                                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />
+<!--                            <AutoCompleteTextView-->
+<!--                                android:id="@+id/search2"-->
+<!--                                android:layout_width="0dp"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_marginEnd="5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                android:background="@drawable/spinner_background"-->
+<!--                                android:hint="search medecine"-->
+<!--                                android:padding="10dp"-->
+<!--                                tools:ignore="TouchTargetSizeCheck,TouchTargetSizeCheck" />-->
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="5dp"
-                                android:layout_marginStart="5dp"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="5dp">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="wrap_content"-->
+<!--                                android:layout_height="wrap_content"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_marginStart="5dp"-->
+<!--                                app:cardCornerRadius="5dp"-->
+<!--                                app:cardElevation="5dp">-->
 
-                                <EditText
-                                    android:id="@+id/quantity0"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:background="@drawable/spinner_background"
-                                    android:hint="Quantity"
-                                    android:inputType="number"
-                                    android:padding="10dp"
-                                    tools:ignore="TouchTargetSizeCheck" />
-                            </androidx.cardview.widget.CardView>
-                        </LinearLayout>
+<!--                                <EditText-->
+<!--                                    android:id="@+id/quantity0"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="match_parent"-->
+<!--                                    android:background="@drawable/spinner_background"-->
+<!--                                    android:hint="Quantity"-->
+<!--                                    android:inputType="number"-->
+<!--                                    android:padding="10dp"-->
+<!--                                    tools:ignore="TouchTargetSizeCheck" />-->
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                        </LinearLayout>-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal">-->
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="5dp">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                app:cardCornerRadius="5dp"-->
+<!--                                app:cardElevation="5dp">-->
 
-                                <Spinner
-                                    android:id="@+id/dose1_1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:entries="@array/dose1"
-                                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                            </androidx.cardview.widget.CardView>
+<!--                                <Spinner-->
+<!--                                    android:id="@+id/dose1_1"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="30dp"-->
+<!--                                    android:entries="@array/dose1"-->
+<!--                                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />-->
+<!--                            </androidx.cardview.widget.CardView>-->
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="5dp">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                app:cardCornerRadius="5dp"-->
+<!--                                app:cardElevation="5dp">-->
 
-                                <Spinner
-                                    android:id="@+id/dose2_1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:entries="@array/dose2"
-                                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                            </androidx.cardview.widget.CardView>
+<!--                                <Spinner-->
+<!--                                    android:id="@+id/dose2_1"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="30dp"-->
+<!--                                    android:entries="@array/dose2"-->
+<!--                                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />-->
+<!--                            </androidx.cardview.widget.CardView>-->
 
-                        </LinearLayout>
+<!--                        </LinearLayout>-->
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+<!--                        <LinearLayout-->
+<!--                            android:layout_width="match_parent"-->
+<!--                            android:layout_height="wrap_content"-->
+<!--                            android:orientation="horizontal">-->
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="5dp">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                app:cardCornerRadius="5dp"-->
+<!--                                app:cardElevation="5dp">-->
 
-                                <Spinner
-                                    android:id="@+id/dose3_1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:entries="@array/dose3"
-                                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
-                            </androidx.cardview.widget.CardView>
+<!--                                <Spinner-->
+<!--                                    android:id="@+id/dose3_1"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="30dp"-->
+<!--                                    android:entries="@array/dose3"-->
+<!--                                    tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />-->
+<!--                            </androidx.cardview.widget.CardView>-->
 
-                            <androidx.cardview.widget.CardView
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_margin="5dp"
-                                android:layout_weight="1"
-                                app:cardCornerRadius="5dp"
-                                app:cardElevation="5dp">
+<!--                            <androidx.cardview.widget.CardView-->
+<!--                                android:layout_width="match_parent"-->
+<!--                                android:layout_height="match_parent"-->
+<!--                                android:layout_margin="5dp"-->
+<!--                                android:layout_weight="1"-->
+<!--                                app:cardCornerRadius="5dp"-->
+<!--                                app:cardElevation="5dp">-->
 
-                                <TextView
-                                    android:id="@+id/note1"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="30dp"
-                                    android:gravity="center"
-                                    android:text="Note"
-                                    android:textAllCaps="true"
-                                    android:textSize="16sp" />
+<!--                                <TextView-->
+<!--                                    android:id="@+id/note1"-->
+<!--                                    android:layout_width="match_parent"-->
+<!--                                    android:layout_height="30dp"-->
+<!--                                    android:gravity="center"-->
+<!--                                    android:text="Note"-->
+<!--                                    android:textAllCaps="true"-->
+<!--                                    android:textSize="16sp" />-->
 
-                            </androidx.cardview.widget.CardView>
-                        </LinearLayout>
+<!--                            </androidx.cardview.widget.CardView>-->
+<!--                        </LinearLayout>-->
 
-                    </LinearLayout>
+<!--                    </LinearLayout>-->
 
-                </androidx.cardview.widget.CardView>
+<!--                </androidx.cardview.widget.CardView>-->
 
                 <LinearLayout
                     android:id="@+id/addMoreMedicine"
@@ -398,7 +398,7 @@
                     android:background="@drawable/shape2"
                     android:drawableEnd="@drawable/add"
                     android:onClick="OnAddMedicine"
-                    android:text="Add more" />
+                    android:text="Add Medicine" />
 
             </LinearLayout>
 
