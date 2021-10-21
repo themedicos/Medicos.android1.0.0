@@ -8,10 +8,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.medicos.UserSignIn.mobileNumberForVerify;
 import com.example.medicos.databinding.ActivityValidateOtpBinding;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -39,15 +43,21 @@ public class validateOTP extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityValidateOtpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+        ProgressBar progressBar = (ProgressBar)findViewById(R.id.spin_kit);
+        Sprite doubleBounce = new ThreeBounce();
+        progressBar.setIndeterminateDrawable(doubleBounce);
+        progressBar.setVisibility(View.GONE);
 
         firebaseAuth=FirebaseAuth.getInstance();
 
         binding.mobileNo.setText(String.format(
                 "+91-%s", getIntent().getStringExtra("mobileNo")
         ));
+
         String otpCode = getIntent().getStringExtra("backendOtp");
 
+
+//Timer...........................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>.
         new CountDownTimer(60000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
@@ -58,8 +68,10 @@ public class validateOTP extends AppCompatActivity {
             @Override
             public void onFinish() {
                 binding.resendOtp.setText("Resend Otp");
+                progressBar.setVisibility(View.GONE);
             }
         }.start();
+
 
         binding.submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,7 +82,8 @@ public class validateOTP extends AppCompatActivity {
                         if (otpCode != null) {
 
                             String enteredOtp = binding.realOtp.getText().toString();
-
+                            progressBar.setVisibility(View.VISIBLE);
+                            getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                             PhoneAuthCredential credential = PhoneAuthProvider.getCredential(otpCode, enteredOtp);
                             signInWithPhoneAuthCredential(credential);
                         }
@@ -90,7 +103,7 @@ public class validateOTP extends AppCompatActivity {
                                 if (task.isSuccessful()) {
                                     FirebaseUser user = task.getResult().getUser();
                                     Intent intent = new Intent(validateOTP.this, UserInputActivity.class);
-                                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                    getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                                     startActivity(intent);
 

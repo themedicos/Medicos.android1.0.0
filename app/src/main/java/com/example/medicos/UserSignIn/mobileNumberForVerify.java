@@ -9,12 +9,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.medicos.R;
 import com.example.medicos.databinding.ActivityMobileNumberForVerifyBinding;
 import com.example.medicos.phoneNoClass;
 import com.example.medicos.validateOTP;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.DoubleBounce;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -46,12 +51,15 @@ public class mobileNumberForVerify extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityMobileNumberForVerifyBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
-        phone ="+91" + binding.realOtp.getText().toString().trim();
+        //progressbar.................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
+        Sprite doubleBounce = new ThreeBounce();
+        progressBar.setIndeterminateDrawable(doubleBounce);
+        progressBar.setVisibility(View.GONE);
 
 
-
+        phone = "+91" + binding.realOtp.getText().toString().trim();
         binding.getOtp.setOnClickListener(new View.OnClickListener() {
             private FirebaseAuth mAuth;
 
@@ -59,10 +67,15 @@ public class mobileNumberForVerify extends AppCompatActivity {
             public void onClick(View v) {
                 if (!binding.realOtp.getText().toString().trim().isEmpty()) {
                     if ((binding.realOtp.getText().toString().trim()).length() == 10) {
-                        Toast.makeText(mobileNumberForVerify.this, "please wait it may take few seconds to send OTP ....", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(mobileNumberForVerify.this, "please wait it may take few seconds...", Toast.LENGTH_SHORT).show();
+
+                        progressBar.setVisibility(View.VISIBLE);
+                        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
 
                         phone = "+91" + binding.realOtp.getText().toString().trim();
                         phoneNoClass.setMobileNoOfDoctor(phone);
+
+
                         HashMap<String, String> phoneData = new HashMap<>();
                         phoneData.put("mobileNoOfDoctor", phone);
                         DatabaseReference Doctor_data = db.getReference("DoctorData").child(phone);
@@ -72,6 +85,7 @@ public class mobileNumberForVerify extends AppCompatActivity {
                                 Toast.makeText(mobileNumberForVerify.this, "number added successfully...", Toast.LENGTH_SHORT).show();
                             }
                         });
+
 
                         SharedPreferences sharedPreferences3 = getSharedPreferences("MySharedPref", MODE_PRIVATE);
                         SharedPreferences.Editor myEdit3 = sharedPreferences3.edit();
@@ -90,6 +104,8 @@ public class mobileNumberForVerify extends AppCompatActivity {
                             @Override
                             public void onFinish() {
                                 binding.Second.setText("Retry");
+                                progressBar.setVisibility(View.GONE);
+                                getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                             }
                         }.start();
                         //------------------//

@@ -1,8 +1,13 @@
 package com.example.medicos;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.medicos.databinding.ActivityMainBinding;
 import com.example.medicos.ui.home.HomeFragment;
@@ -29,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(binding.getRoot());
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(R.id.navigation_home, R.id.navigation_prescription, R.id.navigation_userprofile).build();
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 
         FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
@@ -65,5 +69,31 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+@Override
+public void onBackPressed() {
+    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+    alertDialogBuilder.setTitle("Exit Application?");
+    alertDialogBuilder
+            .setMessage("Click yes to exit!")
+            .setCancelable(false)
+            .setPositiveButton("Yes",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            moveTaskToBack(true);
+                            android.os.Process.killProcess(android.os.Process.myPid());
+                            System.exit(1);
+                        }
+                    })
+
+            .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialog, int id) {
+
+                    dialog.cancel();
+                }
+            });
+
+    AlertDialog alertDialog = alertDialogBuilder.create();
+    alertDialog.show();
+}
 
 }

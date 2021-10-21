@@ -171,18 +171,34 @@
             </com.google.android.material.textfield.TextInputLayout>
 
 
-            <Button
-                android:id="@+id/usreInputButton"
-                android:layout_width="150dp"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="50dp"
-                android:layout_marginEnd="32dp"
-                android:elevation="20dp"
-                android:text="submit"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:orientation="horizontal">
+
+                <com.github.ybq.android.spinkit.SpinKitView
+                    android:id="@+id/spin_kit"
+                    style="@style/SpinKitView.Large.Circle"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:layout_gravity="center"
+                    app:SpinKit_Color="@color/splashscreenBackground" />
+                <Button
+                    android:id="@+id/usreInputButton"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginEnd="32dp"
+                    android:layout_marginStart="10dp"
+                    android:elevation="20dp"
+                    android:text="submit"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

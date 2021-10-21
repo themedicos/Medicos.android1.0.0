@@ -153,6 +153,7 @@
                                 android:background="#FFEE0846" />
 
                             <TextView
+                                android:id="@+id/card1"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -215,7 +216,7 @@
                                 android:background="#FFEE0846" />
 
                             <TextView
-                                android:id="@+id/textView110"
+                                android:id="@+id/card2"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -279,7 +280,7 @@
                                 android:background="#FFEE0846" />
 
                             <TextView
-                                android:id="@+id/textView1100"
+                                android:id="@+id/card3"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"

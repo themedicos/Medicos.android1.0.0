@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_marginStart="10dp"
+    android:layout_marginEnd="10dp"
+    app:circularflow_radiusInDP="20dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#000132"
+        android:contentDescription="@string/app_name"
+        android:gravity="center"
+        android:letterSpacing="0.1"
+        android:scaleType="center"
+        android:text="Why To Choose Us"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="A user interface element that indicates the progress of an operation. Progress bar supports two modes to represent progress: determinate, and indeterminate. For a visual overview of the difference between determinate and indeterminate progress modes, see Progress &amp; activity. Display progress bars to a user in a non-interruptive way. Show the progress bar in your app's user interface or in a notification instead of within a dialog."
+        android:textAlignment="center"
+        android:textColor="#3AC122"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/view12"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="#6C6565"
+        android:padding="5dp" />
+</LinearLayout>
