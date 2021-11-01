@@ -82,7 +82,7 @@ public class mobileNumberForVerify extends AppCompatActivity {
                         Doctor_data.setValue(phoneData).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                Toast.makeText(mobileNumberForVerify.this, "number added successfully...", Toast.LENGTH_SHORT).show();
+
                             }
                         });
 

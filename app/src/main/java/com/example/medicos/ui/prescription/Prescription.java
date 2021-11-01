@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
@@ -40,6 +41,10 @@ public class Prescription extends Fragment {
 
     FirebaseDatabase db = FirebaseDatabase.getInstance();
     ProgressBar progressBar;
+
+    private static final String[] genderPatient = new String[]{
+            "Male","Female","Others"
+    };
 
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentPrescriptionBinding.inflate(inflater, container, false);
@@ -74,7 +79,7 @@ public class Prescription extends Fragment {
 
     private void Patient_detail_show() {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        final View customLayout = getLayoutInflater().inflate(R.layout.alert_patient_details, null);
+        final View customLayout = getLayoutInflater().inflate(R.layout.alert_patient_details,null);
         builder.setView(customLayout)
                 .setCancelable(false)
                 .setPositiveButton(R.string.Submit, new DialogInterface.OnClickListener() {
@@ -83,12 +88,15 @@ public class Prescription extends Fragment {
                         progressBar.setVisibility(View.VISIBLE);
                         EditText user_name = (EditText) customLayout.findViewById(R.id.PatientName);
                         EditText age = (EditText) customLayout.findViewById(R.id.age);
-                        EditText gender = (EditText) customLayout.findViewById(R.id.PatientGender);
+                        AutoCompleteTextView gender = (AutoCompleteTextView) customLayout.findViewById(R.id.PatientGenderInput);
                         String x = phoneNoClass.getMobileNoOfDoctor();
+
+                        ArrayAdapter<String> search_adapter1 = new ArrayAdapter<String>(getContext(),
+                                android.R.layout.simple_dropdown_item_1line, genderPatient);
+                        gender.setAdapter(search_adapter1);
 
                         SharedPreferences sharedPreferences3 = getActivity().getApplicationContext().getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
                         String y = sharedPreferences3.getString("phone", "");
-
 
                         if (!user_name.getText().toString().isEmpty() & (age.getText().toString().trim()).length() <= 3) {
                             String patient_mobileNumber = binding.realOtp.getText().toString();
