@@ -112,27 +112,37 @@
         app:layout_constraintTop_toTopOf="@+id/real_otp"
         app:layout_constraintVertical_bias="0.0" />
 
-    <FrameLayout
+    <LinearLayout
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        app:layout_constraintTop_toBottomOf="@+id/real_otp"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_marginTop="80dp"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/real_otp">
+
+        <com.github.ybq.android.spinkit.SpinKitView
+            android:id="@+id/spin_kit"
+            style="@style/SpinKitView.Large.Circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            app:SpinKit_Color="@color/splashscreenBackground" />
 
         <Button
             android:id="@+id/getOtp"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="right"
-            android:layout_marginTop="80dp"
-            android:layout_marginEnd="32dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="20dp"
             android:text="GET OTP"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />
 
-    </FrameLayout>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

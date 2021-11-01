@@ -10,7 +10,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-        app:cardBackgroundColor="#c4c4c4"
+        app:cardBackgroundColor="#EEEEEE"
+        android:background="@drawable/spinner_background"
         app:cardCornerRadius="10dp">
 
         <LinearLayout
@@ -25,7 +26,7 @@
                 android:layout_gravity="end"
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="20dp"
-                android:onClick="OnDeleteTest"
+                android:background="#FFD400"
                 app:srcCompat="@drawable/ic_baseline_clear_24" />
 
             <LinearLayout
@@ -60,7 +61,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:padding="10dp"
-                        android:text="Specification"
+                        android:hint="specification"
                         android:background="@drawable/spinner_background"
                         android:textColor="#0783EF"
                         android:textSize="14sp"

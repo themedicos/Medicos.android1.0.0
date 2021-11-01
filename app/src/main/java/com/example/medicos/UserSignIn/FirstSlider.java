@@ -70,11 +70,6 @@ public class FirstSlider extends AppCompatActivity {
     }
 
     public void next(View view) {
-        //Once you click login, it will add 1 to shredPreference which will allow autologin in onCreate
-        autoSave = 1;
-//        SharedPreferences.Editor editor = sharedpreferences.edit();
-//        editor.putInt("key", autoSave);
-//        editor.apply();
         Intent intent = new Intent(FirstSlider.this, SignUpLogIn.class);
         startActivity(intent);
     }

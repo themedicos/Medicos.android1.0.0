@@ -13,12 +13,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.DatePicker;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.example.medicos.UserSignIn.SignUpLogIn;
 import com.example.medicos.databinding.ActivityUserInputBinding;
+import com.github.ybq.android.spinkit.sprite.Sprite;
+import com.github.ybq.android.spinkit.style.ThreeBounce;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
@@ -31,9 +35,7 @@ import java.util.HashMap;
 public class UserInputActivity extends AppCompatActivity {
 
     private ActivityUserInputBinding binding;
-
     private DatePickerDialog picker;
-
     FirebaseDatabase db = FirebaseDatabase.getInstance();
 
 
@@ -52,7 +54,14 @@ public class UserInputActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityUserInputBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
+        //progressbar.......................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
+        Sprite doubleBounce = new ThreeBounce();
+        progressBar.setIndeterminateDrawable(doubleBounce);
+        progressBar.setVisibility(View.GONE);
+
+
         ArrayAdapter<String> search_adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_dropdown_item_1line, loginas);
         binding.loginas.setAdapter(search_adapter);
@@ -62,23 +71,25 @@ public class UserInputActivity extends AppCompatActivity {
         binding.Gender.setAdapter(search_adapter1);
 
         String x = phoneNoClass.getMobileNoOfDoctor();
-        SharedPreferences sharedPreferences3 =getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
-        String y= sharedPreferences3.getString("phone","");
+        SharedPreferences sharedPreferences3 = getSharedPreferences("MySharedPref", Context.MODE_PRIVATE);
+        String y = sharedPreferences3.getString("phone", "");
 
         binding.usreInputButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (!binding.name.getText().toString().trim().isEmpty() & !binding.yearOfBirth.getText().toString().trim().isEmpty() & !binding.clinic.getText().toString().isEmpty() & !binding.clinicLocation.getText().toString().isEmpty()) {
+                    progressBar.setVisibility(View.VISIBLE);
+                    getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE, WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                     String loginas_ = binding.loginas.getText().toString();
                     String name_ = binding.name.getText().toString();
                     String yearofbirth_ = binding.yearOfBirth.getText().toString();
                     String gender_ = binding.Gender.getText().toString();
-                    String clinic_=binding.clinic.getText().toString();
+                    String clinic_ = binding.clinic.getText().toString();
                     String clinicLocation_ = binding.clinicLocation.getText().toString();
 
                     //sharedpreference to save user details
-                    SharedPreferences sharedPreferences1 = getSharedPreferences("userDataInSharedPref",MODE_PRIVATE);
-                    SharedPreferences.Editor editor =sharedPreferences1.edit();
+                    SharedPreferences sharedPreferences1 = getSharedPreferences("userDataInSharedPref", MODE_PRIVATE);
+                    SharedPreferences.Editor editor = sharedPreferences1.edit();
                     editor.putString("loginas", loginas_);
                     editor.putString("name", name_);
                     editor.putString("yearofbirth", yearofbirth_);
@@ -99,11 +110,13 @@ public class UserInputActivity extends AppCompatActivity {
                     root.setValue(userinput).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            autoSave=1;
+                            autoSave = 1;
                             SharedPreferences sharedpreferences = getSharedPreferences("autoLogin", Context.MODE_PRIVATE);
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             editor.putInt("key", autoSave);
                             editor.apply();
+                            progressBar.setVisibility(View.GONE);
+                            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                             Intent intent = new Intent(UserInputActivity.this, MainActivity.class);
                             startActivity(intent);
                         }

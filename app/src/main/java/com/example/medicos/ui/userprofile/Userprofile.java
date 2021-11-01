@@ -36,7 +36,6 @@ public class Userprofile extends Fragment {
         binding = FragmentUserprofileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
         View view = inflater.inflate(R.layout.fragment_userprofile, container, false);
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
 //        TextView UserName = (TextView) view.findViewById(R.id.UserName);
 //        TextView Birth_date = (TextView) view.findViewById(R.id.Birth_date);
