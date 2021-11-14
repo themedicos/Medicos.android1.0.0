@@ -3,9 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_dropdown_item_1line.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_first_slider.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_mobile_number_for_verify.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_preview_prescription.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_sign_up_log_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_user_input.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/alert_patient_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/dropdown_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/fragment_home_.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/fragment_prescription.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/P.ARYAPRAKASH/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_dropdown_item_1line.xml" value="0.13046448087431695" />
         <entry key="..\:/Users/P.ARYAPRAKASH/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.11646174863387979" />
         <entry key="..\:/android-development/MEDiCOS/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.21435897435897436" />
