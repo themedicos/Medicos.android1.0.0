@@ -98,7 +98,7 @@ public class Prescription extends Fragment {
 
                         Float i = Float.parseFloat(age.getText().toString());
 
-                        if (!user_name.getText().toString().isEmpty() && !age.getText().toString().isEmpty() && !gender.getText().toString().isEmpty()){
+                        if (!user_name.getText().toString().isEmpty() || !age.getText().toString().isEmpty() || !gender.getText().toString().isEmpty()){
                             if(!user_name.getText().toString().isEmpty()){
                                 if(i<=120&&!age.getText().toString().isEmpty()){
                                     if((gender.getText().toString().contains("Male")||gender.getText().toString().contains("male")||gender.getText().toString().contains("Female")||
