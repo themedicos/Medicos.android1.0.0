@@ -2,392 +2,63 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/linearLayout4"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".prescription.preview_prescription">
-
+    tools:context=".MainActivity">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar5"
+        android:id="@+id/readToolBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"
+        android:layout_height="56dp"
+        android:background="@color/black"
         android:theme="?attr/actionBarTheme"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toStartOf="parent">
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:onClick="backTowritePrescription"
-            android:src="@drawable/ic_baseline_arrow_back_24" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
 
+            <TextView
+                android:id="@+id/readName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:text="Receipt Pdf"
+                android:textAlignment="textStart"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/share"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/share"
+                app:tint="@color/white"
+                android:src="@drawable/ic_baseline_share_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="30dp"
+                android:layout_margin="10dp"
+                android:layout_height="30dp"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.appcompat.widget.Toolbar>
 
-    <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animationView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginEnd="10dp"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
-        app:layout_constraintEnd_toEndOf="@+id/toolbar5"
-        app:layout_constraintTop_toTopOf="parent"
-        app:lottie_autoPlay="true"
-        app:lottie_loop="true"
-        app:lottie_url="https://assets10.lottiefiles.com/packages/lf20_OfpwL7.json" />
-
-    <ScrollView
-        android:id="@+id/scrollView2"
+    <com.github.barteksc.pdfviewer.PDFView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:id="@+id/pdfView"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar5">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <ImageView
-                    android:id="@+id/imageView2"
-                    android:layout_width="6dp"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/clinic"
-                    android:layout_weight="1" />
-
-                <TextView
-                    android:id="@+id/ClinicName_pp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginStart="20dp"
-                    android:layout_weight="1"
-                    android:hint="Clinic Name"/>
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="64dp"
-                    android:layout_height="64dp"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/logo7" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/clinicLocation_pp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:hint="Location"
-                    android:textAlignment="textStart"
-                    android:textColor="#000000"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
-
-                <TextView
-                    android:id="@+id/DoctorName_pp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="Dr.XXX"
-                    android:textAlignment="textStart"
-                    android:textSize="16sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/DoctorPhNO_pp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_weight="1"
-                    android:textColor="#000000"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:drawableStartCompat="@drawable/ic_baseline_phone_24" />
-
-                <TextView
-                    android:id="@+id/textView23"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="Date"
-                    android:textAlignment="textStart"
-                    android:textSize="14sp" />
-            </LinearLayout>
-
-            <View
-                android:id="@+id/view4"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginTop="10dp"
-                android:background="#E9000000" />
-
-            <TextView
-                android:id="@+id/textView25"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="Test Advices :"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView26"
-                    android:layout_width="50dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/table"
-                    android:gravity="center"
-                    android:text="Sl No." />
-
-                <TextView
-                    android:id="@+id/textView27"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:gravity="center"
-                    android:text="Test Name" />
-
-                <TextView
-                    android:id="@+id/textView28"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:gravity="center"
-                    android:text="Specification" />
-            </TableRow>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"></androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/textView29"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="5dp"
-                android:text="Medicine Prescribed :"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TableRow
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/textView30"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:text="Sl No."
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView31"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:text="Medicine Name"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView32"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:text="Dosage Info"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView33"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:text="Quantity"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
-
-                <TextView
-                    android:id="@+id/textView34"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@drawable/table"
-                    android:text="Note"
-                    android:textAlignment="center"
-                    android:textSize="12sp" />
-            </TableRow>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recyclerview2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <TextView
-                android:id="@+id/textView35"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:padding="5dp"
-                android:text="Patient Info :"
-                android:textColor="#000000"
-                android:textSize="16sp"
-                android:textStyle="bold" />
-
-            <TableLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp">
-
-                    <TextView
-                        android:id="@+id/textView36"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="10dp"
-                        android:text="Name :" />
-
-                    <TextView
-                        android:id="@+id/PatientName_pp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:hint="Patient Name"
-                        android:textAlignment="textStart" />
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp">
-
-                    <TextView
-                        android:id="@+id/textView38"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:text="Age :" />
-
-                    <TextView
-                        android:id="@+id/patientAge_pp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:hint="Age" />
-
-                    <TextView
-                        android:id="@+id/textView40"
-                        android:layout_width="100dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:text="Gender :" />
-
-                    <TextView
-                        android:id="@+id/PatientGender_pp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:hint="Gender"/>
-                </TableRow>
-
-                <TableRow
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp">
-
-                    <TextView
-                        android:id="@+id/textView45"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="7dp"
-                        android:text="Symptoms :"
-                        android:textSize="12dp" />
-
-                    <TextView
-                        android:id="@+id/textView42"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:text="xxxx" />
-
-                    <TextView
-                        android:id="@+id/textView43"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:text="Allergies :"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:id="@+id/textView44"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="10dp"
-                        android:text="xxxx" />
-                </TableRow>
-
-            </TableLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
+        app:layout_constraintTop_toBottomOf="@+id/readToolBar" />
 </androidx.constraintlayout.widget.ConstraintLayout>
