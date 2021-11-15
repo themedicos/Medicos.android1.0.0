@@ -89,8 +89,7 @@ public class Prescription extends Fragment {
                         textInputLayout = customLayout.findViewById(R.id.menu);
                         gender = (EditText) customLayout.findViewById(R.id.PatientGenderInput);
 
-
-
+                        String[] gender_Array = {"Male","male","Female","female","Others","others"};
                         String x = phoneNoClass.getMobileNoOfDoctor();
 
 
@@ -99,26 +98,39 @@ public class Prescription extends Fragment {
 
                         Float i = Float.parseFloat(age.getText().toString());
 
-                        if (!user_name.getText().toString().isEmpty() && i<=120){
-                            String patient_mobileNumber = binding.realOtp.getText().toString();
-                            String phNoOfpatient= patientPhNo.setPhNoOfPatient(patient_mobileNumber);
-                            HashMap<String, String> patientData = new HashMap<>();
-                            patientData.put("nameOfPatient", user_name.getText().toString());
-                            patientData.put("ageOfPatient", age.getText().toString());
-                            patientData.put("genderOfPatient", gender.getText().toString());
-                            patientData.put("mobileNoOfPatient", patient_mobileNumber);
-                            DatabaseReference Patient_data = db.getReference("DoctorData").child(y)
-                                    .child(patient_mobileNumber);
-                            Patient_data.setValue(patientData).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    progressBar.setVisibility(View.INVISIBLE);
-                                    Intent intent = new Intent(getContext(), WritePrescription.class);
-                                    intent.putExtra("patientName", user_name.getText().toString());
-                                    startActivity(intent);
-                                }
-                            });
+                        if (!user_name.getText().toString().isEmpty() && !age.getText().toString().isEmpty() && !gender.getText().toString().isEmpty()){
+                            if(!user_name.getText().toString().isEmpty()){
+                                if(i<=120&&!age.getText().toString().isEmpty()){
+                                    if((gender.getText().toString().contains("Male")||gender.getText().toString().contains("male")||gender.getText().toString().contains("Female")||
+                                            gender.getText().toString().contains("female")||gender.getText().toString().contains("Others")||gender.getText().toString().contains("others"))&&!gender.getText().toString().isEmpty()){
+                                        String patient_mobileNumber = binding.realOtp.getText().toString();
+                                        String phNoOfpatient= patientPhNo.setPhNoOfPatient(patient_mobileNumber);
+                                        HashMap<String, String> patientData = new HashMap<>();
+                                        patientData.put("nameOfPatient", user_name.getText().toString());
+                                        patientData.put("ageOfPatient", age.getText().toString());
+                                        patientData.put("genderOfPatient", gender.getText().toString());
+                                        patientData.put("mobileNoOfPatient", patient_mobileNumber);
+                                        DatabaseReference Patient_data = db.getReference("DoctorData").child(y)
+                                                .child(patient_mobileNumber);
+                                        Patient_data.setValue(patientData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                progressBar.setVisibility(View.INVISIBLE);
+                                                Intent intent = new Intent(getContext(), WritePrescription.class);
+                                                intent.putExtra("patientName", user_name.getText().toString());
+                                                startActivity(intent);
+                                            }
+                                        });
 
+                                    }else{
+                                        Toast.makeText(getContext(), "Please Enter Male,Female,Others", Toast.LENGTH_SHORT).show();
+                                    }
+                                }else{
+                                    Toast.makeText(getContext(), "Please Enter Correct age", Toast.LENGTH_SHORT).show();
+                                }
+                            }else{
+                                Toast.makeText(getContext(), "Please Enter Name ", Toast.LENGTH_SHORT).show();
+                            }
                         } else {
                             progressBar.setVisibility(View.INVISIBLE);
                             Toast.makeText(getContext(), "You have not entered all the datas correctly", Toast.LENGTH_SHORT).show();
