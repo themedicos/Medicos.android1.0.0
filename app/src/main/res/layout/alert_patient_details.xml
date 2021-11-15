@@ -64,7 +64,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:id="@+id/menu"
+            android:id="@+id/menus"
             android:layout_width="match_parent"
             android:hint="Gender*"
             android:layout_weight="1"

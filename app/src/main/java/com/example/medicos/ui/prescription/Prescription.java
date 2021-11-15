@@ -86,7 +86,7 @@ public class Prescription extends Fragment {
                         progressBar.setVisibility(View.VISIBLE);
                         EditText user_name = (EditText) customLayout.findViewById(R.id.PatientName);
                         EditText age = (EditText) customLayout.findViewById(R.id.age);
-                        textInputLayout = customLayout.findViewById(R.id.menu);
+                        textInputLayout = customLayout.findViewById(R.id.menus);
                         gender = (EditText) customLayout.findViewById(R.id.PatientGenderInput);
 
                         String[] gender_Array = {"Male","male","Female","female","Others","others"};
