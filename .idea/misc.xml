@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/HP/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_dropdown_item_1line.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_first_slider.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_main.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_mobile_number_for_verify.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_preview_prescription.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_sign_up_log_in.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/activity_user_input.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/alert_patient_details.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/dropdown_item.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/fragment_bottom_sheet.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/fragment_home_.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/HP/Desktop/medicos/app/src/main/res/layout/fragment_prescription.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/P.ARYAPRAKASH/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_dropdown_item_1line.xml" value="0.13046448087431695" />
         <entry key="..\:/Users/P.ARYAPRAKASH/AppData/Local/Android/Sdk/platforms/android-30/data/res/layout/simple_spinner_item.xml" value="0.11646174863387979" />
         <entry key="..\:/Users/P.ARYAPRAKASH/Documents/Med_Android/Medicos.android1.0.0/app/src/main/res/drawable/ic_baseline_location_on_24.xml" value="0.1" />
@@ -88,7 +100,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

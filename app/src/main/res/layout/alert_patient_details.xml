@@ -58,27 +58,34 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:maxLength="3"
+                android:inputType="number"
                 tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:id="@+id/menus"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
             android:hint="Gender*"
             android:layout_weight="1"
             android:layout_marginEnd="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_height="match_parent">
 
-            <AutoCompleteTextView
+            <EditText
                 android:id="@+id/PatientGenderInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:maxLength="6"
                 android:inputType="text"
-                tools:ignore="LabelFor,TouchTargetSizeCheck" />
+                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
+
     </LinearLayout>
+
 
 </LinearLayout>
