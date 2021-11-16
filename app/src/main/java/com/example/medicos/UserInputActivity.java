@@ -56,6 +56,7 @@ public class UserInputActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         //progressbar.......................>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
         ProgressBar progressBar = (ProgressBar) findViewById(R.id.spin_kit);
         Sprite doubleBounce = new ThreeBounce();
         progressBar.setIndeterminateDrawable(doubleBounce);
@@ -86,6 +87,7 @@ public class UserInputActivity extends AppCompatActivity {
                     String gender_ = binding.Gender.getText().toString();
                     String clinic_ = binding.clinic.getText().toString();
                     String clinicLocation_ = binding.clinicLocation.getText().toString();
+                    String Registation = binding.RegistationNo.getText().toString();
 
                     //sharedpreference to save user details
                     SharedPreferences sharedPreferences1 = getSharedPreferences("userDataInSharedPref", MODE_PRIVATE);
@@ -96,6 +98,7 @@ public class UserInputActivity extends AppCompatActivity {
                     editor.putString("gender", gender_);
                     editor.putString("clinicName", clinic_);
                     editor.putString("clinicLocation", clinicLocation_);
+                    editor.putString("RegistationNO", Registation);
                     editor.apply();
 
                     //save data in database
@@ -106,6 +109,7 @@ public class UserInputActivity extends AppCompatActivity {
                     userinput.put("gender", gender_);
                     userinput.put("clinicName", clinic_);
                     userinput.put("clinicLocation", clinicLocation_);
+                    userinput.put("RegistationNO", Registation);
                     DatabaseReference root = db.getReference("DoctorData").child(y);
                     root.setValue(userinput).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override

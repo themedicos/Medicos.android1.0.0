@@ -7,6 +7,7 @@ import androidx.appcompat.widget.AppCompatSpinner;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.medicos.Model.PdfData;
 import com.example.medicos.Model.prescribed_medicine;
 import com.example.medicos.Model.prescribed_test;
 import com.example.medicos.R;
@@ -81,10 +83,15 @@ public class WritePrescription extends AppCompatActivity implements View.OnClick
 
                 if (checkIfValidAndRead()) {
                     Intent intent = new Intent(WritePrescription.this, preview_prescription.class);
-                    Bundle bundle = new Bundle();
-                    bundle.putSerializable("list", test_list_added1);
-                    bundle.putSerializable("list2", medicine_list_added1);
-                    intent.putExtras(bundle);
+                    //intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    PdfData data = new PdfData();
+                    int  a=0;
+                    for(prescribed_medicine med : medicine_list_added1){
+                        Log.e("a"+a,med.toString());
+                        a++;
+                    }
+                    data.setTestArrayList(test_list_added1);
+                    data.setMedicineArrayList(medicine_list_added1);
                     startActivity(intent);
                 }
                 break;
@@ -95,6 +102,7 @@ public class WritePrescription extends AppCompatActivity implements View.OnClick
 
     private boolean checkIfValidAndRead() {
         test_list_added1.clear();
+        medicine_list_added1.clear();
         boolean result = true;
         for (int i = 0; i < addMoreAdviceTest.getChildCount(); i++) {
 
@@ -199,9 +207,9 @@ public class WritePrescription extends AppCompatActivity implements View.OnClick
 
     private void addview2() {
 
-        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
+//        LayoutInflater inflater = (LayoutInflater) getSystemService(LAYOUT_INFLATER_SERVICE);
 
-        final View addMoreMed = inflater.inflate(R.layout.medicine__box, null, false);
+        final View addMoreMed = getLayoutInflater().inflate(R.layout.medicine__box, null, false);
 
         AutoCompleteTextView search2 = (AutoCompleteTextView) addMoreMed.findViewById(R.id.search2);
         EditText quantity1 = (EditText) addMoreMed.findViewById(R.id.quantity1);
